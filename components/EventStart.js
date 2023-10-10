@@ -1,8 +1,12 @@
 // This component display the start time of the event
 
-import { parseISO, format } from 'date-fns';
+// Add the time of the day
+
+import { format } from 'date-fns';
 
 export function EventStart({ dateString }) {
-    const date = parseISO(dateString);
-    return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>;
+    return (
+      <time dateTime={dateString} className="text-md font-bold text-gray-400 p-4">
+        {format(dateString, 'eee. LLLL d, yyyy - HH:mm')}
+      </time>);
   }
