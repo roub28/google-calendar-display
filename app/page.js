@@ -1,29 +1,23 @@
 import { getGcalData } from 'components/getGcalData'
-import Image from 'next/image'
+import { EventCard } from 'components/EventCard'
 
 export default async function Page() {
-  const data = await getGcalData()
-  const summaryElements = data.items.map((item) => (
-    <div class="basis-1/4" key={item.id}>
-      Summary: {item.summary}
-      {item.attachments ? (
-          <Image
-          src={`https://drive.google.com/uc?export=view&id=${item.attachments[0].fileUrl.split(/[=&]/)[1]}`}
-          width={200}
-          height={200}
-          alt="Picture of the author"
-        />
-      ) : null}
-    </div>
-  ));
+  const allEvents = await getGcalData()
+  const firstEvent = {
+    title: "Event Title", 
+    image: "1NvBsXjVnMn3u1jriNhUnwFsbRGRIJZIo",
+  };
+  const secondEvent = allEvents[3]
+
   
   return (
     <div>
-      <h1 className="text-sm ...">Events to come</h1>
-      <div className="flex flex-row">
-        {summaryElements}
+      <h1>Events to come ?</h1>
+      <div className="flex flex-col">
+        {allEvents.map((eventData) => (
+            <EventCard key={eventData.id} eventData={eventData} />
+          ))}
       </div>
     </div>
-
   )
 }
