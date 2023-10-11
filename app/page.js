@@ -11,7 +11,7 @@ export default async function Page() {
   
   return (
     <div>
-      <header className="flex flex-row space-x-4 p-4">
+      <header className="flex flex-row justify-center space-x-4 p-4">
         <Image 
           src="logo.svg" // Route of the image file
           height={50} // Desired size with correct aspect ratio
@@ -20,7 +20,7 @@ export default async function Page() {
         />
         <h1 className="text-4xl font-bold text-gray-800">My Third Place Events</h1>
       </header>
-      <div className="flex flex-col">
+      <div className="flex flex-col justify-center items-center sm:flex-row sm:flex-wrap sm:items-start">
         {allEvents.map((eventData) => (
             <EventCard key={eventData.id} eventData={eventData} />
           ))}
