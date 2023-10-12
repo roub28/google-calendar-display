@@ -8,7 +8,7 @@ export async function getGcalData() {
     try {
       let res = await fetch(apiUrl, { cache: 'no-store' });
       if (process.env.NODE_ENV === 'production') {
-        res = await fetch(apiUrl);
+        res = await fetch(apiUrl, { next: { revalidate: 3600 } });
       } 
   
       if (!res.ok) {
