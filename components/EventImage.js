@@ -3,7 +3,8 @@
 import Image from 'next/image'
 
 export function EventImage({ imageId }) {
-    let src=`https://drive.google.com/uc?export=view&id=${imageId}`
+    let src=`https://www.googleapis.com/drive/v3/files/${imageId}?alt=media&key=${process.env.GCAL_API_KEY}`
+    
     if (imageId === "default") {
         src = "logo.svg"
       }
