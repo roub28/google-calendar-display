@@ -1,7 +1,3 @@
-// Todo : Get Calendar attachment file through GoogleDriveAPI
-
-// Manage style to adapt to bigger viewports
-
 import { getGcalData } from 'components/getGcalData'
 import { EventCard } from 'components/EventCard'
 import Image from 'next/image'
@@ -13,9 +9,9 @@ export default async function Page() {
     <div>
       <header className="flex flex-row justify-center space-x-4 p-4">
         <Image 
-          src="logo.svg" // Route of the image file
-          height={50} // Desired size with correct aspect ratio
-          width={50} // Desired size with correct aspect ratio
+          src="logo.svg"
+          height={50}
+          width={50}
           alt="Logo"
         />
         <h1 className="text-4xl font-bold text-gray-800">My Third Place Events</h1>

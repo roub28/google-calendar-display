@@ -11,7 +11,9 @@ export function EventCard({eventData}) {
         <EventImage imageId={eventData.image} />
         <EventTitle titleString={eventData.title} />
         <EventStart dateString={eventData.start} />
-        <EventDescription descriptionString={eventData.description} />
+        {eventData.description ? (
+          <EventDescription descriptionString={eventData.description} />
+        ) : null}
       </div>
     );
   }

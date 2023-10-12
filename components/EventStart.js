@@ -1,7 +1,5 @@
 // This component display the start time of the event
 
-// Add the time of the day
-
 import { format } from 'date-fns';
 
 export function EventStart({ dateString }) {

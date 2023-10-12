@@ -1,23 +1,20 @@
 // This component display the image of the event
 
-
-//A faire
-// Manage the alt information
-// Optimize Image Size
-
-
 import Image from 'next/image'
 
 export function EventImage({ imageId }) {
- 
+    let src=`https://drive.google.com/uc?export=view&id=${imageId}`
+    if (imageId === "default") {
+        src = "logo.svg"
+      }
+
     return (
         <div className="relative rounded-lg h-40">
             <Image className="rounded-t-lg"
-            src={`https://drive.google.com/uc?export=view&id=${imageId}`}
+            src={src}
             fill
             style={{objectFit: "cover"}}
-            // width={300}
-            // height={200}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             alt="Image of the event"
             />
         </div>

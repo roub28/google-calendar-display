@@ -1,6 +1,4 @@
-// This component display the Title of the event
-
-// Improvment : avoid having to define px-4 tailwind parameter
+// This component display the Description of the event
 
 'use client'
 
@@ -18,7 +16,7 @@ export function EventDescription({ descriptionString }) {
 
   const toggleSeeLess = () => {
     setSeeMore(false);
-  };
+  }
   
   // Check if the last character of descriptionBegin is a space and remove it if not
   if (descriptionString[maxLength] && descriptionString[maxLength] !== ' ') {
@@ -27,7 +25,7 @@ export function EventDescription({ descriptionString }) {
       descriptionBegin = descriptionBegin.slice(0, lastSpaceIndex);
     }
   }
-  
+
   const descriptionEnd = descriptionString.slice(descriptionBegin.length);
 
   const combinedDescription = seeMore ? descriptionBegin + descriptionEnd : descriptionBegin;
@@ -35,14 +33,16 @@ export function EventDescription({ descriptionString }) {
   return (
     <div>
       <p className="text-base text-justify text-black px-4 pt-2 pb-0">
-        {combinedDescription + (seeMore ? "" : "...")}
+        {combinedDescription + (seeMore || descriptionString.length < maxLength  ? "" : "...")}
       </p>
-      <button
-        className="w-full text-base text-right font-bold text-blue-500 px-4 pt-0 pb-2 cursor-pointer"
-        onClick={toggleSeeMore}
-      >
-        {seeMore ? "See Less" : "See More"}
-      </button>
+      {descriptionString.length > maxLength && (
+        <button
+          className="w-full text-base text-right font-bold text-blue-500 px-4 pt-0 pb-2 cursor-pointer"
+          onClick={seeMore ? toggleSeeLess : toggleSeeMore}
+        >
+          {seeMore ? "See Less" : "See More"}
+        </button>
+      )}
     </div>
   );
 }
